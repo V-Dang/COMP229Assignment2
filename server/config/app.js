@@ -7,15 +7,15 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
 //MODULES FOR AUTHENTICAION
-let session = require("express-session");
-let passport = require("passport");
-let passportLocal = require("passport-local");
-let localStrategy = passportLocal.Strategy;
-let flash = require("connect-flash");
+let session = require("express-session");     //creates sessions with cookies
+let passport = require("passport");           //authenticates pw
+let passportLocal = require("passport-local");//stores user and pw locally
+let localStrategy = passportLocal.Strategy;   
+let flash = require("connect-flash");         //for rendering flash messages
 
 //--------------------------------------------------------------------
 //database Setup
-let mongoose = require("mongoose");
+let mongoose = require("mongoose");           //to "control" mongodb (object modelling tool)
 let DB = require("./db");
 
 //Point mongoose to the DB URI
@@ -27,10 +27,10 @@ mongodb.once("open", () => {
   console.log("Database Connected");
 });
 
-// paths
+// paths - how app endpoints respond (URIs) to client requests 
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
-let contactsRouter = require("../routes/contacts");       //create book route
+let contactsRouter = require("../routes/contacts");       //create contacts route
 const { allowedNodeEnvironmentFlags } = require('process');
 
 let app = express();
@@ -71,13 +71,13 @@ let User = userModel.User;
 //Implement a user authentication strategy
 passport.use(User.createStrategy());
 
-//Serialize/Deserialize user object info -encrypt and decrypt
+//Serialize/Deserialize user object info -encrypt and decrypt (password)
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);                   //user router
-app.use('/contact-list', contactsRouter);               //use book router
+app.use('/users', usersRouter);                         //user router
+app.use('/contact-list', contactsRouter);               //contact router
 //app.use('/contact', contactsRouter); 
 
 //------------------------------------------------------------------------------------------------
