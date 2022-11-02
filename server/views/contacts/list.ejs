@@ -1,0 +1,74 @@
+<%- include ('../partials/header.ejs') %>
+
+<%- include ('../partials/main_nav.ejs') %>
+  
+
+
+<!-- Main Content -->
+<main class="container">
+    <!--add boostrap table code-->
+  
+    <div class="row">
+      <div class="col-md-offset-3 col-md-8">
+        <h1><%=title %></h1>
+
+        <% if(typeof displayName == 'string' && displayName) { %>
+        <a href="/contact-list/add" class="btn btn-primary" role="button">
+        <i class ="fas fa-plus-circle"></i> Add a contact
+        </a>
+        <% } %>
+        
+        <br />
+
+        <table class="table table-bordered table-striped table-hover" id="ordertable">
+          <!--HEader row-->
+          <tr>
+            <% if(typeof displayName == 'string' && displayName) { %>
+            <th class="text-center col-2">Name</th>
+            <th class="text-center col-2">Number</th>
+            <th class="text-center col-1">Email</th>
+            <% } else { %>
+              <th class="text-center col-2">Name <button onclick="tableSort()"><i class="fas fa-angle-up"></i></button></th>
+              <th class="text-center col-2">Number</th>
+              <th class="text-center col-1">Email</th>
+              <% } %>  
+          </tr>
+  
+          <!--Repetable Templet row-->
+          <% for (let count=0; count<ContactsList.length; count++){%>
+            <tr>
+              <% if(typeof displayName == 'string' && displayName) { %>
+              <td class="text-centre "><%=ContactsList[count].c_name %></td>
+              <td class="text-centre "><%=ContactsList[count].c_number %></td>
+              <td class="text-centre "><%=ContactsList[count].c_email %></td>
+              <td class="text-center col-1">
+                <a href="/contact-list/edit/<%= ContactsList[count]._id %>" class="btn btn-primary btn-sm">
+                <i class="fas fa-pencil-alt"></i> Edit</a>
+            </td>
+            <td class="text-center col-1">
+                <a href="/contact-list/delete/<%= ContactsList[count]._id %>" class="btn btn-danger btn-sm">
+                <i class="fas fa-trash-alt"></i> Delete</a>
+            </td>
+            <% } else { %>
+              <td class="text-centre "><%=ContactsList[count].c_name %></td>
+              <td class="text-centre "><%=ContactsList[count].c_number %></td>
+              <td class="text-centre "><%=ContactsList[count].c_email %></td>
+              <% } %>  
+            </tr>
+          <%}%>
+        </table>
+      </div>
+    </div>
+  </main>
+  
+  
+  
+<%- include ('../partials/bottom_nav.ejs') %>  
+
+<%- include ('../partials/footer.ejs') %>
+  
+
+
+
+
+

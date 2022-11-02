@@ -1,6 +1,6 @@
 {
   "name": "comp229-mongodb",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "nodemon ./server.js"
@@ -29,17 +29,17 @@
     "save-dev": "^0.0.1-security"
   },
   "description": "demo app for COMP229 Week 3",
-  "main": "index.js",
+  "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tsiliopoulos/COMP229-F2020-Week3.git"
+    "url": "git+https://github.com/V-Dang/COMP229---Week-6-MongoDB.git"
   },
-  "author": "Tom Tsiliopoulos",
+  "author": "Vivian Dang",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tsiliopoulos/COMP229-F2020-Week3/issues"
+    "url": "https://github.com/V-Dang/COMP229---Week-6-MongoDB#readme"
   },
-  "homepage": "https://github.com/tsiliopoulos/COMP229-F2020-Week3#readme",
+  "homepage": "https://github.com/V-Dang/COMP229---Week-6-MongoDB",
   "devDependencies": {
     "@types/connect-flash": "^0.0.37",
     "@types/express": "^4.17.14",

@@ -9,7 +9,7 @@ let logger = require('morgan');
 let session = require("express-session");
 let passport = require("passport");
 let passportLocal = require("passport-local");
-let localStrategy = passportLocal.strategy;
+let localStrategy = passportLocal.Strategy;
 let flash = require("connect-flash");
 
 //--------------------------------------------------------------------
@@ -29,7 +29,7 @@ mongodb.once("open", () => {
 // paths
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
-let booksRouter = require("../routes/book");       //create book route
+let contactsRouter = require("../routes/contacts");       //create book route
 const { allowedNodeEnvironmentFlags } = require('process');
 
 let app = express();
@@ -55,7 +55,7 @@ app.use(
 );
 
 //INITIALIZE FLASH
-app.use(flash());
+app.use(flash());                   //for error messages
 
 //INITIALIZE PASSPORT
 app.use(passport.initialize());
@@ -76,7 +76,9 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);                   //user router
-app.use('/book-list', booksRouter);               //use book router
+app.use('/contact-list', contactsRouter);               //use book router
+//app.use('/contact', contactsRouter); 
+
 //------------------------------------------------------------------------------------------------
 
 // catch 404 and forward to error handler
