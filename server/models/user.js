@@ -1,3 +1,4 @@
+//COMP229-Assignment-2-Vivian-Dang-302278335
 //Require modules for the User Model
 //Cannot authenticate w/o User Model
 let mongoose = require("mongoose");

@@ -1,5 +1,4 @@
-//new file created for database
-//npm install mongoose --save
+//COMP229-Assignment-2-Vivian-Dang-302278335
 
 //Must decalre URI, uses book_store database from local
 module.exports = {
